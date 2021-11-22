@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Coin Page</title>
+</head>
+<body>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="col-6 mr-auto ml-auto">
+          <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <h4>{{ length_of_blog }}</h4>
+              <legend class="mb-4">Coingecko news</legend>
+              <div class="form-group">
+                {{ form.coin_name.label(class="form-control-label") }}
+        
+                
+                    {{ form.coin_name(class="form-control form-control-lg") }}
+                
+                </div>
+            </fieldset>
+            <div class="form-group align-items-center">
+                {{ form.submit(class="btn btn-success") }}
+            </div>
+          </form>
+          <br>
+          {% for i in range(title|length) %}
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title"> {{ title[i] }} </h5>
+                    
+                </div>
+                <div class="card-body">
+                  {{ parag[i] }}
+                </div>
+            </div><br>
+          {% endfor %}
+          <br><br>
+        </div>
+        </div>
+      </div>
+    </main>
+
+
+    
+</body>
+</html>
