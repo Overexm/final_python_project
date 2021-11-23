@@ -1,0 +1,8 @@
+Flask==2.0.2
+Flask-SQLAlchemy==2.5.1
+PyJWT==2.2.0
+beautifulSoup==4.9.3
+lxml==4.6.3
+tensorflow==2.6.0
+WTForms==3.0.0
+transformers==4.12.3
