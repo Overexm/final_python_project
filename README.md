@@ -48,6 +48,9 @@ For Mac OS,Linux:
 * ### WTForms
 ```python $ pip install WTForms ```
 
+* ### Flask-WTF
+```python $ pip install Flask-WTF ```
+
 * ### PostgreSQL Database [Download](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
 
 
