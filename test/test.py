@@ -44,17 +44,17 @@ class News(db.Model):
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        login_ = request.form["login"]
+        login = request.form["login"]
         password = request.form["password"]
-        user = User.query.filter_by(login=login_, password=password).first()
+        user = User.query.filter_by(login=login, password=password).first()
         if user is not None:
-            user_token=jwt.encode({"login": login_, "password": password}, app.config['SECRET_KEY'], algorithm="HS256")
+            user_token=jwt.encode({"login": login, "password": password}, app.config['SECRET_KEY'], algorithm="HS256")
             user.token = user_token
             db.session.add(user)
             db.session.commit()
             return  redirect("/coin")
         else:
-            return f"<h1>Could not found a user with login: {login_}</h1>"
+            return f"<h1>Could not found a user with login: {login}</h1>"
    
     return render_template("login.html")
 
@@ -82,7 +82,7 @@ def dataToCoin( coin_name):
 
     my_list = []
     while True:
-        api = f'https://api.coinmarketcap.com/data-api/v3/cryptocurrency/listing?start=1&limit=10&sortBy=market_cap&sortType=desc&convert=USD&cryptoType=all&tagType=all&audited=false'
+        api = f'https://api.coinmarketcap.com/data-api/v3/cryptocurrency/listing?start=1&limit=10&sortBy=market_cap&sortType=desc&convert=EUR&cryptoType=all'
         sending = requests.get(url=api)
         
         
@@ -91,8 +91,8 @@ def dataToCoin( coin_name):
         
         for i in range(0, 10):
             my_list.append({
-                'id': data['data']['cryptoCurrencyList'][i]['id'],
-                'name': data['data']['cryptoCurrencyList'][i]['name'],
+                'id': data['data']['cryptoList'][i]['id'],
+                'name': data['data']['cryptoList'][i]['name'],
 
             })
         
